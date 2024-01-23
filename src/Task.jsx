@@ -18,7 +18,7 @@ const Task = () => {
 
   return (
     <div className="task-container flex flex-col py-1 px-6">
-      {tasksArr.length === 0 && <img src="/to-do-no-task.png" alt="" />}
+      {tasksArr.length === 0 && <img src={process.env.PUBLIC_URL + "/to-do-no-task.png"} alt="Заданий пока нет" />}
       {tasksArr.map((el, i) => {
         return (
           <div className="flex items-center" key={i}>
@@ -28,8 +28,8 @@ const Task = () => {
               <p className="task-description ml-7">{el.task}</p>
             </label>
             <img
-              src="/delete.png"
-              alt=""
+              src={process.env.PUBLIC_URL + "/delete.png"}
+              alt="Удалить"
               onClick={() => removeTaskFromList(el[i])}
               className="w-3 h-3 opacity-12 ml-auto cursor-pointer"
             />
