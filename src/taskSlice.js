@@ -8,24 +8,24 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      return [...state, { id: uuid(), task: action.payload, isDone: false }];
+      return [...state, { id: uuid(), task: action.payload, isCompleted: false }];
     },
 
     removeTask: (state, action) => {
-      const index = state.findIndex((el, i) => el.task === action.payload.task);
+      const index = state.findIndex((el) => el.id === action.payload);
       if (index > -1) state.splice(index, 1);
     },
 
     toggleTaskCompleted: (state, action) => {
-      const foundElement = state.find((el, i) => el.task === action.payload.task);
-      foundElement.isDone = !foundElement.isDone;
+      const foundElement = state.find((el, i) => el.id === action.payload);
+      foundElement.isCompleted = !foundElement.isCompleted;
     },
   },
 });
 
 export const { addTask, removeTask, toggleTaskCompleted } = taskSlice.actions;
 
-export const completedTasks = (state) => state.tasks.filter((el) => el.isDone === true);
+export const completedTasks = (state) => state.tasks.filter((el) => el.isCompleted === true);
 
 //middleware для сохранения элементов в localStorage
 export const listenerMiddleware = createListenerMiddleware();

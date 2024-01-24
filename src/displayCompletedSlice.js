@@ -18,7 +18,7 @@ export const displayCompletedTasksSlice = createSlice({
 });
 
 export const { displayCompletedTasks, displayAllTasks } = displayCompletedTasksSlice.actions;
-export const shouldDisplayCompletedTasks = (state) => state.displayCompletedTasks.displayCompleted;
+export const shouldOnlyDisplayCompletedTasks = (state) => state.displayCompletedTasks.displayCompleted;
 
 //middleware для сохранения элементов в localStorage
 export const listenerMiddleware = createListenerMiddleware();
