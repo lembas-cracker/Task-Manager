@@ -27,7 +27,7 @@ export const { addTask, removeTask, toggleTaskCompleted } = taskSlice.actions;
 
 export const completedTasks = (state) => state.tasks.filter((el) => el.isCompleted === true);
 
-//middleware для сохранения элементов в localStorage
+//Middleware for storing elements in localStorage
 export const listenerMiddleware = createListenerMiddleware();
 
 listenerMiddleware.startListening({

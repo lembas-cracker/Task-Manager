@@ -8,6 +8,7 @@ import displayCompletedTasksReducer, {
   listenerMiddleware as listenerMiddlewareDisplayCompleted,
 } from "../displayCompletedSlice";
 
+//Retrieving current states from localStorage
 const previousSessionTasks = JSON.parse(localStorage.getItem("tasks") || "null");
 const previousSessionDisplayCompleted = JSON.parse(localStorage.getItem("displayCompletedTasks") || "null");
 

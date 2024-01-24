@@ -6,6 +6,7 @@ const TodoForm = () => {
   const dispatch = useDispatch();
   const ref = useRef();
 
+  //Adding a task to localStorage
   const addAndStoreTask = (e) => {
     e.preventDefault();
     let task = ref.current.value.trim();

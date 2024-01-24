@@ -5,7 +5,9 @@ function App() {
   return (
     <div className="flex justify-center m-4 lg:my-14">
       <div className="w-full lg:w-1/3">
-        <h2 className="text-center font-medium text-2xl">DAILIST</h2>
+        <h2 className="text-center text-3xl text-[#27212C] text-opacity-90 tracking-wider font-semibold font-sans">
+          DAILIST
+        </h2>
         <div className="w-full">
           <TodoForm></TodoForm>
         </div>
