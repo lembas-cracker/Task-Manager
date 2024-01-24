@@ -7,11 +7,8 @@
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
 
-.task-container {
-  border: transparent;
 
-  .task-container_label {
-    margin: 15px 0;
+  .task-container-label {
     font-size: 19px;
     font-family: Lato, sans-serif;
     color: black;
@@ -66,4 +63,3 @@
         }
       }
   }
-}

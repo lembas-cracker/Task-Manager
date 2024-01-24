@@ -1,17 +1,31 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { listenerMiddleware } from "../taskSlice";
-import taskReducer, { initialState as taskSliceInitialState } from "../taskSlice";
+import taskReducer, {
+  initialState as taskSliceInitialState,
+  listenerMiddleware as listenerMiddlewareTasks,
+} from "../taskSlice";
+import displayCompletedTasksReducer, {
+  initialState as displayCompletedInitialState,
+  listenerMiddleware as listenerMiddlewareDisplayCompleted,
+} from "../displayCompletedSlice";
 
 const previousSessionTasks = JSON.parse(localStorage.getItem("tasks") || "null");
+const previousSessionDisplayCompleted = JSON.parse(localStorage.getItem("displayCompletedTasks") || "null");
 
 export const store = configureStore({
   preloadedState: {
     tasks: previousSessionTasks === null ? taskSliceInitialState : previousSessionTasks,
+    displayCompletedTasks:
+      previousSessionDisplayCompleted === null ? displayCompletedInitialState : previousSessionDisplayCompleted,
   },
   reducer: {
     tasks: taskReducer,
+    displayCompletedTasks: displayCompletedTasksReducer,
   },
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), listenerMiddleware.middleware],
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    listenerMiddlewareTasks.middleware,
+    listenerMiddlewareDisplayCompleted.middleware,
+  ],
 });
 
 export default store;

@@ -3,11 +3,15 @@ import TodoForm from "./TodoForm";
 
 function App() {
   return (
-    <div className="flex-col items-center justify-center">
-      <h2 className="text-center font-medium text-2xl">DAILIST</h2>
-      <div className="max-w-lg rounded-md shadow-md border-gray-300 m-auto">
-        <TodoForm></TodoForm>
-        <TaskBoard></TaskBoard>
+    <div className="flex justify-center items-center lg:h-screen">
+      <div className="lg:w-1/3">
+        <h2 className="text-center font-medium text-2xl">DAILIST</h2>
+        <div className="w-full lg:max-h-96">
+          <TodoForm></TodoForm>
+        </div>
+        <div className="lg:max-h-96 overflow-visible rounded-md border-gray-300">
+          <TaskBoard></TaskBoard>
+        </div>
       </div>
     </div>
   );
