@@ -25,7 +25,7 @@ const TodoForm = () => {
           ref={ref}
           className="form-input text-md my-3 p-3 w-11/12 border border-gray-300 bg-slate-100 rounded-3xl focus:outline-none focus:shadow-inner"
         />
-        <button className="absolute top-3 right-0 p-3 leading-[1.65rem] font-semibold bg-red-500 text-white rounded-3xl hover:bg-red-400 focus:outline-none focus:ring focus:border-blue-500">
+        <button className="absolute top-3 right-0 p-3 leading-[1.65rem] font-semibold bg-red-600 text-white rounded-3xl hover:bg-red-500 focus:outline-none focus:ring focus:border-blue-500">
           Добавить
         </button>
       </form>
