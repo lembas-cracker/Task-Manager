@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import "./taskAnimation.scss";
 import { useDispatch } from "react-redux";
-import { removeTask } from "./taskSlice";
+import { removeTask, Task as ITask } from "./taskSlice";
 import { toggleTaskCompleted } from "./taskSlice";
 
-const Task = ({ task }) => {
+interface TaskProps {
+  task: ITask;
+}
+
+const Task = ({ task }: TaskProps) => {
   const dispatch = useDispatch();
 
-  const removeTaskFromList = (taskId) => {
+  const removeTaskFromList = (taskId: string) => {
     dispatch(removeTask(taskId));
   };
 
-  const handleTaskCompleted = (taskId) => {
+  const handleTaskCompleted = (taskId: string) => {
     dispatch(toggleTaskCompleted(taskId));
   };
 
@@ -31,8 +35,8 @@ const Task = ({ task }) => {
       <label className="task-container-label flex min-w-0 items-center my-4">
         <input type="checkbox" checked={task.isCompleted} onChange={() => handleTaskCompleted(task.id)} />
         <i className="task-container-checkbox"></i>
-        <p className="task-description min-w-0 break-words truncate ml-7 mr-2" title={task.task}>
-          {task.task}
+        <p className="task-description min-w-0 break-words truncate ml-7 mr-2" title={task.taskName}>
+          {task.taskName}
         </p>
       </label>
       <img

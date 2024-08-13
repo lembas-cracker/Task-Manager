@@ -22,11 +22,10 @@ export const store = configureStore({
     tasks: taskReducer,
     displayCompletedTasks: displayCompletedTasksReducer,
   },
-  middleware: (getDefaultMiddleware) => [
-    ...getDefaultMiddleware(),
-    listenerMiddlewareTasks.middleware,
-    listenerMiddlewareDisplayCompleted.middleware,
-  ],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware()
+      .prepend(listenerMiddlewareTasks.middleware)
+      .concat(listenerMiddlewareDisplayCompleted.middleware),
 });
 
 export default store;

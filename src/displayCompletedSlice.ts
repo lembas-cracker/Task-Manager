@@ -1,6 +1,10 @@
 import { createSlice, createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 
-export const initialState = {
+interface DisplayCompletedState {
+  displayCompleted: boolean;
+}
+
+export const initialState: DisplayCompletedState = {
   displayCompleted: false,
 };
 
@@ -18,7 +22,8 @@ export const displayCompletedTasksSlice = createSlice({
 });
 
 export const { displayCompletedTasks, displayAllTasks } = displayCompletedTasksSlice.actions;
-export const shouldOnlyDisplayCompletedTasks = (state) => state.displayCompletedTasks.displayCompleted;
+export const shouldOnlyDisplayCompletedTasks = (state: { displayCompletedTasks: DisplayCompletedState }) =>
+  state.displayCompletedTasks.displayCompleted;
 
 //middleware for storing elements in localStorage
 export const listenerMiddleware = createListenerMiddleware();
@@ -26,7 +31,10 @@ export const listenerMiddleware = createListenerMiddleware();
 listenerMiddleware.startListening({
   matcher: isAnyOf(displayCompletedTasks, displayAllTasks),
   effect: (action, listenerApi) =>
-    localStorage.setItem("displayCompletedTasks", JSON.stringify(listenerApi.getState().displayCompletedTasks)),
+    localStorage.setItem(
+      "displayCompletedTasks",
+      JSON.stringify((listenerApi.getState() as any).displayCompletedTasks)
+    ),
 });
 
 export default displayCompletedTasksSlice.reducer;

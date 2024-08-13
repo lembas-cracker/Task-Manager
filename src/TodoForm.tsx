@@ -4,16 +4,19 @@ import { addTask } from "./taskSlice";
 
 const TodoForm = () => {
   const dispatch = useDispatch();
-  const ref = useRef();
+  const ref = useRef<HTMLInputElement>(null);
 
   //Adding a task to localStorage
-  const addAndStoreTask = (e) => {
+  const addAndStoreTask = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    let task = ref.current.value.trim();
 
-    if (task !== "") {
-      dispatch(addTask(task));
-      ref.current.value = "";
+    if (ref.current) {
+      let task = ref.current.value.trim();
+
+      if (task !== "") {
+        dispatch(addTask(task));
+        ref.current.value = "";
+      }
     }
   };
 

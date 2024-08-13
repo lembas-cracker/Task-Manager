@@ -1,10 +1,11 @@
 import Task from "./Task";
 import { useDispatch, useSelector } from "react-redux";
 import { displayAllTasks, displayCompletedTasks, shouldOnlyDisplayCompletedTasks } from "./displayCompletedSlice";
+import { Task as ITask } from "./taskSlice";
 
 const TaskBoard = () => {
   const shouldOnlyDisplayCompleted = useSelector(shouldOnlyDisplayCompletedTasks);
-  const tasksArr = useSelector((state) => state.tasks);
+  const tasksArr = useSelector((state: { tasks: ITask[] }) => state.tasks);
   const completedOnlyArr = tasksArr.filter((task) => task.isCompleted);
   const dispatch = useDispatch();
 
